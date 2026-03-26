@@ -11,7 +11,7 @@
 
 ### 必要な環境変数
 
-`/home/runner/work/ai-coding-bootcamp/ai-coding-bootcamp/server/.env` を作成し、以下を設定します。
+`<project-root>/server/.env` を作成し、以下を設定します。
 
 ```env
 AZURE_OPENAI_API_KEY=your-api-key-here
@@ -20,19 +20,19 @@ AZURE_OPENAI_DEPLOYMENT=gpt-4.1
 AZURE_OPENAI_API_VERSION=2024-12-01-preview
 ```
 
-テンプレートは `/home/runner/work/ai-coding-bootcamp/ai-coding-bootcamp/server/.env.example` を参照してください。
+テンプレートは `<project-root>/server/.env.example` を参照してください。
 
 ### 依存関係のインストール
 
 ```bash
-cd /home/runner/work/ai-coding-bootcamp/ai-coding-bootcamp
+cd <project-root>
 python -m pip install -r server/requirements.txt
 ```
 
 ### 起動コマンド
 
 ```bash
-cd /home/runner/work/ai-coding-bootcamp/ai-coding-bootcamp
+cd <project-root>
 python -m uvicorn server.main:app --reload --port 8000
 ```
 
@@ -44,6 +44,6 @@ python -m uvicorn server.main:app --reload --port 8000
 ### テスト実行
 
 ```bash
-cd /home/runner/work/ai-coding-bootcamp/ai-coding-bootcamp
+cd <project-root>
 python -m pytest server/tests
 ```

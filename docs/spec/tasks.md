@@ -24,7 +24,7 @@
 | A-5 | ✅ | `README.md` にローカル開発起動手順を記載 | `README.md` | [A-1, A-2] | A-3と並列可 |
 
 ### Phase A 完了条件
-- `cd server && pip install -r requirements.txt && uvicorn main:app --reload --port 8000` でサーバー起動成功
+- `python -m pip install -r server/requirements.txt && python -m uvicorn server.main:app --reload --port 8000` でサーバー起動成功
 - `cd client && npm install && npm run dev` でフロントエンド起動成功（localhost:3000）
 - `GET /api/health` が `{"status": "ok"}` を返す
 

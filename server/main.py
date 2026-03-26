@@ -7,22 +7,13 @@ import logging
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 
-try:  # pragma: no cover - 実行方法の違いを吸収するための分岐
-    from .config import get_settings
-    from .models.schemas import HealthResponse, ReportResponse
-    from .services.openai_service import (
-        AzureOpenAIReportService,
-        AzureOpenAIServiceConfig,
-        UnsupportedImageFormatError,
-    )
-except ImportError:  # pragma: no cover
-    from config import get_settings
-    from models.schemas import HealthResponse, ReportResponse
-    from services.openai_service import (
-        AzureOpenAIReportService,
-        AzureOpenAIServiceConfig,
-        UnsupportedImageFormatError,
-    )
+from .config import get_settings
+from .models.schemas import HealthResponse, ReportResponse
+from .services.openai_service import (
+    AzureOpenAIReportService,
+    AzureOpenAIServiceConfig,
+    UnsupportedImageFormatError,
+)
 
 
 logger = logging.getLogger(__name__)
@@ -76,8 +67,6 @@ async def generate_report(
         return ReportResponse(report=report)
     except HTTPException:
         raise
-    except UnsupportedImageFormatError as exc:
-        raise HTTPException(status_code=400, detail=str(exc)) from exc
     except Exception as exc:
         logger.exception("日報生成に失敗しました")
         raise HTTPException(

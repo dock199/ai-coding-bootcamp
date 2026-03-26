@@ -377,7 +377,7 @@ export default defineConfig({
 
 ```
 DevContainer (Python 3.12 + Node.js)
-├── server: uvicorn main:app --reload --port 8000
+├── server: python -m uvicorn server.main:app --reload --port 8000
 └── client: npm run dev (port 3000)
 ```
 
