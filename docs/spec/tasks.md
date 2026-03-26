@@ -18,7 +18,7 @@
 | ID | ステータス | タスク | 成果物 | 依存 | 備考 |
 |----|-----------|--------|--------|------|------|
 | A-1 | ✅ | `server/` ディレクトリ作成・初期構成 | `server/main.py`, `server/config.py`, `server/requirements.txt`, `server/.env.example`, `server/models/schemas.py`, `server/services/openai_service.py` | なし | A-2と並列可 |
-| A-2 | ⬜ | `client/` ディレクトリ作成・Vite + React + TypeScript 初期化 | `client/` 配下全体（`npm create vite@latest` で生成） | なし | A-1と並列可 |
+| A-2 | ✅ | `client/` ディレクトリ作成・Vite + React + TypeScript 初期化 | `client/` 配下全体（`npm create vite@latest` で生成） | なし | A-1と並列可 |
 | A-3 | ⬜ | CORS設定・Vite proxy設定 | `server/main.py`（CORSMiddleware追加）、`client/vite.config.ts`（proxy追加） | [A-1, A-2] | — |
 | A-4 | ✅ | `.gitignore` 更新 | `.gitignore`（`.env`, `node_modules/`, `__pycache__/` 等追加） | [A-1, A-2] | A-3と並列可 |
 | A-5 | ✅ | `README.md` にローカル開発起動手順を記載 | `README.md` | [A-1, A-2] | A-3と並列可 |
@@ -52,17 +52,17 @@
 
 | ID | ステータス | タスク | 成果物 | 依存 | 備考 |
 |----|-----------|--------|--------|------|------|
-| C-1 | ⬜ | 型定義 | `client/src/types/index.ts`（`UploadedImage`, `ReportResponse`, `ApiError`） | [A-2] | C-2と並列可 |
-| C-2 | ⬜ | APIクライアント | `client/src/services/api.ts`（`fetch` で `POST /api/generate-report` 呼び出し） | [A-2] | C-1と並列可 |
-| C-3 | ⬜ | `ImageUploader` コンポーネント | `client/src/components/ImageUploader.tsx`（ドラッグ&ドロップ `onDrop`、クリップボード貼り付け `onPaste`） | [C-1] | C-4と並列可 |
-| C-4 | ⬜ | `ImagePreview` コンポーネント | `client/src/components/ImagePreview.tsx`（画像一覧サムネイル表示・個別削除ボタン） | [C-1] | C-3と並列可 |
-| C-5 | ⬜ | `useReportGenerator` カスタムフック | `client/src/hooks/useReportGenerator.ts`（ローディング・エラー・結果の状態管理） | [C-2] | — |
-| C-6 | ⬜ | `GenerateButton` コンポーネント | `client/src/components/GenerateButton.tsx`（ローディング中は無効化、画像なし時も無効化） | [C-5] | — |
-| C-7 | ⬜ | `ReportEditor` コンポーネント | `client/src/components/ReportEditor.tsx`（`textarea` で表示・編集） | [C-1] | C-3〜C-6と並列可 |
-| C-8 | ⬜ | `CopyButton` コンポーネント | `client/src/components/CopyButton.tsx`（`navigator.clipboard.writeText()`） | [C-7] | — |
-| C-9 | ⬜ | `ErrorMessage` コンポーネント | `client/src/components/ErrorMessage.tsx`（エラーメッセージ表示） | [C-1] | 他と並列可 |
-| C-10 | ⬜ | `App.tsx` 統合 | `client/src/App.tsx`（全コンポーネントのレイアウト・状態連携） | [C-3, C-4, C-5, C-6, C-7, C-8, C-9] | — |
-| C-11 | ⬜ | スタイリング | `client/src/App.css`（デスクトップ向けレイアウト） | [C-10] | — |
+| C-1 | ✅ | 型定義 | `client/src/types/index.ts`（`UploadedImage`, `ReportResponse`, `ApiError`） | [A-2] | C-2と並列可 |
+| C-2 | ✅ | APIクライアント | `client/src/services/api.ts`（`fetch` で `POST /api/generate-report` 呼び出し） | [A-2] | C-1と並列可 |
+| C-3 | ✅ | `ImageUploader` コンポーネント | `client/src/components/ImageUploader.tsx`（ドラッグ&ドロップ `onDrop`、クリップボード貼り付け `onPaste`） | [C-1] | C-4と並列可 |
+| C-4 | ✅ | `ImagePreview` コンポーネント | `client/src/components/ImagePreview.tsx`（画像一覧サムネイル表示・個別削除ボタン） | [C-1] | C-3と並列可 |
+| C-5 | ✅ | `useReportGenerator` カスタムフック | `client/src/hooks/useReportGenerator.ts`（ローディング・エラー・結果の状態管理） | [C-2] | — |
+| C-6 | ✅ | `GenerateButton` コンポーネント | `client/src/components/GenerateButton.tsx`（ローディング中は無効化、画像なし時も無効化） | [C-5] | — |
+| C-7 | ✅ | `ReportEditor` コンポーネント | `client/src/components/ReportEditor.tsx`（`textarea` で表示・編集） | [C-1] | C-3〜C-6と並列可 |
+| C-8 | ✅ | `CopyButton` コンポーネント | `client/src/components/CopyButton.tsx`（`navigator.clipboard.writeText()`） | [C-7] | — |
+| C-9 | ✅ | `ErrorMessage` コンポーネント | `client/src/components/ErrorMessage.tsx`（エラーメッセージ表示） | [C-1] | 他と並列可 |
+| C-10 | ✅ | `App.tsx` 統合 | `client/src/App.tsx`（全コンポーネントのレイアウト・状態連携） | [C-3, C-4, C-5, C-6, C-7, C-8, C-9] | — |
+| C-11 | ✅ | スタイリング | `client/src/App.css`（デスクトップ向けレイアウト、和モダンテーマ） | [C-10] | — |
 
 ### Phase C 完了条件
 - 画像をドラッグ&ドロップでアップロードしプレビュー表示される

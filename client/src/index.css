@@ -1,0 +1,74 @@
+/* 和モダン テーマ — 墨色 × 和紙 × 藍 */
+:root {
+  /* カラーシステム */
+  --color-washi: #F5F0E8;
+  --color-washi-deep: #EDE6D8;
+  --color-sumi: #2C2C2C;
+  --color-sumi-light: #4A4A4A;
+  --color-sumi-muted: #7A7A7A;
+  --color-ai: #1B4965;
+  --color-ai-light: #2D6A8F;
+  --color-ai-faint: rgba(27, 73, 101, 0.08);
+  --color-shu: #C73E3A;
+  --color-border: #D4CFC4;
+  --color-border-light: #E5E0D6;
+  --color-success: #3A7D44;
+  --color-error: #C73E3A;
+  --color-error-bg: #FDF2F2;
+
+  /* タイポグラフィ */
+  --font-serif: 'Noto Serif JP', 'Yu Mincho', '游明朝', serif;
+  --font-sans: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+
+  /* スペーシング（8px基準） */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+
+  /* シャドウ */
+  --shadow-sm: 0 1px 3px rgba(44, 44, 44, 0.06);
+  --shadow-md: 0 4px 12px rgba(44, 44, 44, 0.08);
+  --shadow-lg: 0 8px 24px rgba(44, 44, 44, 0.1);
+
+  /* トランジション */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+
+  /* レイアウト */
+  --max-width: 760px;
+  --radius: 2px;
+
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--color-sumi);
+  background: var(--color-washi);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  /* 和紙の微かなノイズテクスチャ */
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+#root {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-lg);
+  min-height: 100dvh;
+}
