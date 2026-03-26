@@ -1,0 +1,25 @@
+{
+  "name": "Python 3.12 + Node.js Development",
+  "build": { "dockerfile": "Dockerfile" },
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "postCreateCommand": "python -m pip install --upgrade pip && python -m pip install fastapi uvicorn python-dotenv",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "humao.rest-client",
+        "github.copilot",
+        "ms-azuretools.vscode-azure-github-copilot",
+        "github.vscode-pull-request-github",
+        "bierner.markdown-mermaid"
+      ]
+    }
+  },
+  "forwardPorts": [3000, 8000]
+}

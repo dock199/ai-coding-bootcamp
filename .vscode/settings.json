@@ -1,0 +1,8 @@
+{
+  // コミットメッセージ生成用のカスタム指示
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "コミットメッセージは必ず日本語で、先頭は Conventional Commits の形式で書いてください。変更を分析して「～ができる」という形式で書いてください"
+    }
+  ]
+}
