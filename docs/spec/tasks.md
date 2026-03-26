@@ -17,11 +17,11 @@
 
 | ID | ステータス | タスク | 成果物 | 依存 | 備考 |
 |----|-----------|--------|--------|------|------|
-| A-1 | ⬜ | `server/` ディレクトリ作成・初期構成 | `server/main.py`, `server/config.py`, `server/requirements.txt`, `server/.env.example`, `server/models/schemas.py`, `server/services/openai_service.py` | なし | A-2と並列可 |
+| A-1 | ✅ | `server/` ディレクトリ作成・初期構成 | `server/main.py`, `server/config.py`, `server/requirements.txt`, `server/.env.example`, `server/models/schemas.py`, `server/services/openai_service.py` | なし | A-2と並列可 |
 | A-2 | ⬜ | `client/` ディレクトリ作成・Vite + React + TypeScript 初期化 | `client/` 配下全体（`npm create vite@latest` で生成） | なし | A-1と並列可 |
 | A-3 | ⬜ | CORS設定・Vite proxy設定 | `server/main.py`（CORSMiddleware追加）、`client/vite.config.ts`（proxy追加） | [A-1, A-2] | — |
-| A-4 | ⬜ | `.gitignore` 更新 | `.gitignore`（`.env`, `node_modules/`, `__pycache__/` 等追加） | [A-1, A-2] | A-3と並列可 |
-| A-5 | ⬜ | `README.md` にローカル開発起動手順を記載 | `README.md` | [A-1, A-2] | A-3と並列可 |
+| A-4 | ✅ | `.gitignore` 更新 | `.gitignore`（`.env`, `node_modules/`, `__pycache__/` 等追加） | [A-1, A-2] | A-3と並列可 |
+| A-5 | ✅ | `README.md` にローカル開発起動手順を記載 | `README.md` | [A-1, A-2] | A-3と並列可 |
 
 ### Phase A 完了条件
 - `cd server && pip install -r requirements.txt && uvicorn main:app --reload --port 8000` でサーバー起動成功
@@ -34,12 +34,12 @@
 
 | ID | ステータス | タスク | 成果物 | 依存 | 備考 |
 |----|-----------|--------|--------|------|------|
-| B-1 | ⬜ | Pydanticスキーマ定義 | `server/models/schemas.py`（`ReportResponse`, `HealthResponse`） | [A-1] | B-2と並列可 |
-| B-2 | ⬜ | 環境変数管理実装 | `server/config.py`（`AZURE_OPENAI_API_KEY`, `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_DEPLOYMENT`, `AZURE_OPENAI_API_VERSION` を読み込み） | [A-1] | B-1と並列可 |
-| B-3 | ⬜ | Azure OpenAI サービス実装 | `server/services/openai_service.py`（画像Base64エンコード、プロンプト構築、API呼び出し） | [B-1, B-2] | — |
-| B-4 | ⬜ | `POST /api/generate-report` エンドポイント実装 | `server/main.py`（複数画像受信、バリデーション、サービス呼び出し） | [B-3] | — |
-| B-5 | ⬜ | `GET /api/health` エンドポイント実装 | `server/main.py` | [A-1] | B-1〜B-4と並列可 |
-| B-6 | ⬜ | バックエンド単体テスト | `server/tests/test_main.py`, `server/tests/test_openai_service.py` | [B-4] | — |
+| B-1 | ✅ | Pydanticスキーマ定義 | `server/models/schemas.py`（`ReportResponse`, `HealthResponse`） | [A-1] | B-2と並列可 |
+| B-2 | ✅ | 環境変数管理実装 | `server/config.py`（`AZURE_OPENAI_API_KEY`, `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_DEPLOYMENT`, `AZURE_OPENAI_API_VERSION` を読み込み） | [A-1] | B-1と並列可 |
+| B-3 | ✅ | Azure OpenAI サービス実装 | `server/services/openai_service.py`（画像Base64エンコード、プロンプト構築、API呼び出し） | [B-1, B-2] | — |
+| B-4 | ✅ | `POST /api/generate-report` エンドポイント実装 | `server/main.py`（複数画像受信、バリデーション、サービス呼び出し） | [B-3] | — |
+| B-5 | ✅ | `GET /api/health` エンドポイント実装 | `server/main.py` | [A-1] | B-1〜B-4と並列可 |
+| B-6 | ✅ | バックエンド単体テスト | `server/tests/test_main.py`, `server/tests/test_openai_service.py` | [B-4] | — |
 
 ### Phase B 完了条件
 - `POST /api/generate-report` に画像送信で日報マークダウンが返る（Azure OpenAI API接続時）
@@ -127,3 +127,4 @@ E-4（README最終化）
 | 日付 | 変更内容 | 変更者 |
 |------|---------|--------|
 | 2025-08-28 | 初版作成 | - |
+| 2026-03-26 | Phase B バックエンド実装状況を更新 | Copilot |
